@@ -19,6 +19,10 @@ AgriF4rm v2 was created to provide an **engaging farming simulation** where you 
 ![image](https://github.com/user-attachments/assets/299ff761-1dd4-49e3-b763-b613d0db642c)
 ![image](https://github.com/user-attachments/assets/ace5a09c-10b0-41ec-bfa8-add306d6579e)
 
+### Click here to see agriF4rm v2 Presentation on YouTube 🕺
+[![agriF4rm v2 Presentation on YouTube](https://img.youtube.com/vi/WMmqbqRgx-o/0.jpg)](https://www.youtube.com/watch?v=WMmqbqRgx-o)
+
+
 ---
 
 ## **🧐 Features**  
