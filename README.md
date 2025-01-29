@@ -43,18 +43,17 @@ AgriF4rm v2 was created to provide an **engaging farming simulation** where you 
 ### **📥 Download the Game**  
 
 🔹 **Packaged Version (`.asar`)** - **Optimized & Secure**  
-➡ **[Download AgriF4rm-v2_asar.exe](#)**  
+➡ **[Download AgriF4rm-v2_nomod.exe](https://github.com/0adri3n/agriF4rm-v2/releases/download/v1.0.0/agriF4rm_v2_nomod.zip)**  
 
 🔹 **Editable Version (`No Asar`)** - **Modify game files after installation**  
-➡ **[Download AgriF4rm-v2_noasar.exe](#)**  
+➡ **[Download AgriF4rm-v2_moddable.exe](https://github.com/0adri3n/agriF4rm-v2/releases/download/v1.0.0/agriF4rm_v2_moddable.zip)**  
 
 ---
 
 ### **💾 Install & Play**  
 
 📌 **1️⃣ Download** and run the `.exe` file  
-📌 **2️⃣ Follow the setup** and choose an installation folder  
-📌 **3️⃣ Launch the game and start farming! 🌾**  
+📌 **2️⃣ Launch the game and start farming! 🌾**  
 
 💡 **Version Differences:**  
 | Version | Security | Editable after installation |
@@ -70,12 +69,12 @@ Want to modify or build the game yourself? Follow these steps:
 
 ### **1️⃣ Clone the repository**  
 ```bash
-git clone https://github.com/yourusername/agrif4rm-v2.git
+git clone https://github.com/0adri3n/agriF4rm-v2.git
 ```
 
 ### **2️⃣ Install dependencies**  
 ```bash
-cd agrif4rm-v2
+cd agriF4rm-v2
 npm install
 ```
 
