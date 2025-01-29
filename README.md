@@ -43,10 +43,10 @@ AgriF4rm v2 was created to provide an **engaging farming simulation** where you 
 ### **📥 Download the Game**  
 
 🔹 **Packaged Version (`.asar`)** - **Optimized & Secure**  
-➡ **[Download AgriF4rm-v2_nomod.exe](https://github.com/0adri3n/agriF4rm-v2/releases/download/v1.0.0/agriF4rm_v2_nomod.zip)**  
+➡ **[Download AgriF4rm-v2_nomod.zip](https://github.com/0adri3n/agriF4rm-v2/releases/download/v1.0.0/agriF4rm_v2_nomod.zip)**  
 
 🔹 **Editable Version (`No Asar`)** - **Modify game files after installation**  
-➡ **[Download AgriF4rm-v2_moddable.exe](https://github.com/0adri3n/agriF4rm-v2/releases/download/v1.0.0/agriF4rm_v2_moddable.zip)**  
+➡ **[Download AgriF4rm-v2_moddable.zip](https://github.com/0adri3n/agriF4rm-v2/releases/download/v1.0.0/agriF4rm_v2_moddable.zip)**  
 
 ---
 
