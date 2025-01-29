@@ -1,0 +1,48 @@
+{
+  "name": "agrif4rm-v2",
+  "version": "1.0.0",
+  "main": "main.js",
+  "description": "A farming simulation game built with Electron.",
+  "author": "Your Name",
+  "license": "ISC",
+  "keywords": [],
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build:asar": "electron-builder --config.asar=true",
+    "build:noasar": "electron-builder --config.asar=false"
+  },
+  "devDependencies": {
+    "electron": "^34.0.1",
+    "electron-builder": "^24.6.0"
+  },
+  "dependencies": {
+    "discord-rpc": "^4.0.1",
+    "pixi.js": "^8.7.2",
+    "sqlite3": "^5.1.7",
+    "uuid": "^11.0.5"
+  },
+  "build": {
+    "appId": "com.agrif4rm.v2",
+    "productName": "AgriF4rm v2",
+    "copyright": "Copyright © 2024 Your Name",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*"
+    ],
+    "asar": true,
+    "extraResources": [],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "./src/html/img/app_icon_256x256.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

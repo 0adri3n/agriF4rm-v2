@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>agriF4rm v2</title>
+  <style>
+    @font-face { font-family: C_C; font-weight: bold; src: url('./font/c_c_inet.ttf'); }
+    body {
+      margin: 0;
+      font-family: C_C;
+      font-size: 1.2em;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    #header,
+    #footer {
+      position: fixed;
+      pointer-events: none;
+    }
+
+    #header {
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 5px;
+      z-index: 10;
+      width: 18%;
+    }
+
+    #footer {
+      width: 100%;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.0);
+    }
+
+    button {
+      pointer-events: auto;
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      font-family: C_C;
+    }
+
+    #stats {
+      text-align: left;
+      padding: 10px;
+      font-size: 1.2em;
+    }
+
+    #stats span.price {
+      color: green;
+      font-weight: bold;
+    }
+
+    #stats span.basic { color: black; }
+    #stats span.rare { color: orange; }
+    #stats span.epic { color: purple; }
+    #stats span.legendary { color: gold; }
+
+    #field-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #quest-container {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 20%;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 5px;
+      z-index: 10;
+      text-align: left;
+      overflow-y: auto;
+      max-height: 100%;
+    }
+
+    #quest-container li {
+      margin-bottom: 15px;
+    }
+
+    #notification-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      color: black;
+      border-radius: 10px;
+      display: none;
+      z-index: 1000;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    #notification-container button {
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    #notification-container button:hover {
+      background-color: #ff1a1a;
+    }
+
+    .unselectable {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <div id="stats">
+      <p>Wheat: <span id="wheat-amount">0</span></p>
+      <p>Wheat Price ($): <span class="price" id="wheat-price">2</span></p>
+      <p>Money: <span id="money">0</span></p>
+      <p>Dimension: <span id="dimension">25</span></p>
+      <p>Profitability: <span id="profitability">0</span></p>
+      <p>Dimension Perc: <span id="dimension_perc">0</span>%</p>
+      <p>Rentability Perc: <span id="rentability_perc">0</span>%</p>
+
+      <h2>Agricultors Stats</h2>
+      <ul>
+        <li>Basic: <span class="basic" id="basic-farmers">0</span></li>
+        <li>Rare: <span class="rare" id="rare-farmers">0</span></li>
+        <li>Epic: <span class="epic" id="epic-farmers">0</span></li>
+        <li>Legendary: <span class="legendary" id="legendary-farmers">0</span></li>
+      </ul>
+      <h2>Game time: <span id="game_time">0</span></h2>
+    </div>
+    <div id="notification-container"></div>
+  </div>
+
+  <div id="quest-container">
+    <h2 class="unselectable">Quests</h2>
+    <ul id="quest-list">
+    </ul>
+  </div>
+
+  <div id="field-container">
+    <canvas id="field-canvas" width="800" height="800"></canvas>
+  </div>
+
+  <div id="footer">
+    <button id="roll-farmer" class="unselectable">Recruit a Farmer</button>
+    <button id="max-rolls" class="unselectable">Max Rolls</button>
+    <button id="expand-field" class="unselectable">Expand Dimension</button>
+    <button id="sell-wheat" class="unselectable">Sell Wheat</button>
+    <button id="logout" class="unselectable">Logout</button>
+  </div>
+
+  <script src="../js/renderer.js" type="module"></script>
+  <script src="../js/game.js" type="module"></script>
+  <script src="../js/map.js" type="module"></script>
+
+  <script>
+    async function loadConfig() {
+      try {
+        const response = await fetch('./config/game_style.json');
+        const config = await response.json();
+        if (config.backgroundImage) {
+          document.body.style.backgroundImage = `url('${config.backgroundImage}')`;
+          document.getElementById("field-canvas").style.backgroundColor = config.fieldBackground;
+        }
+      } catch (error) {
+        console.error("Error loading configuration:", error);
+      }
+    }
+
+    loadConfig();
+
+    function closeNotification() {
+      const notificationContainer = document.getElementById("notification-container");
+      notificationContainer.style.display = 'none';
+    }
+  </script>
+</body>
+</html>

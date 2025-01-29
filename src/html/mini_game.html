@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>agriF4rm v2</title>
+  <style>
+    @font-face { font-family: C_C; font-weight: bold; src: url('./font/c_c_inet.ttf'); }
+    
+    body {
+      background-image: url("./img/mini_game_bg.gif");
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      position: relative;
+    }
+
+    .unselectable {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    #logout-container {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .farming-text {
+      font-size: 30px;
+      font-family: C_C;
+      color: yellow;
+      white-space: nowrap;
+    }
+
+    .dots {
+      animation: blink 1.6s infinite;
+      opacity: 0;
+    }
+
+    .logout-btn {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: C_C;
+    }
+
+    .logout-btn img {
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+    }
+
+    .logout-btn:hover {
+      background-color: yellow;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div id="logout-container" class="unselectable">
+    <div class="farming-text">
+      Farming
+      <span class="dots" style="animation-delay: 0s;">.</span>
+      <span class="dots" style="animation-delay: 0.5s;">.</span>
+      <span class="dots" style="animation-delay: 1s;">.</span>
+    </div>
+    <button id="logout" class="logout-btn">
+      <img src="./img/logout-icon.png" alt="Logout">
+    </button>
+  </div>
+
+  <script src="../js/renderer.js" type="module"></script>
+  <script src="../js/mini_game.js" type="module"></script>
+</body>
+</html>
