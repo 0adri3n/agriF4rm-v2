@@ -157,6 +157,8 @@ ipcRenderer.on("start-game", async (event, user) => {
       dimension_perc: row.dimension_perc,
       rentability_perc: row.prod_perc,
       "game_time": convertMinutesToTime(game_time),
+      "numRolls" : Math.floor(money / 500),
+      "expValue" : getUpgradeCost(dimension).cost,
     });
 
     displayQuests();
@@ -209,6 +211,7 @@ bindButton("sell-wheat", async () => {
   updateUI({
     "wheat-amount": wheat.toFixed(2),
     money: money.toFixed(2),
+    "numRolls" : Math.floor(money / 500)
   });
 
   showNotification(
@@ -267,6 +270,7 @@ bindButton("roll-farmer", () => {
       "rare-farmers": farmers.Rare,
       "epic-farmers": farmers.Epic,
       "legendary-farmers": farmers.Legendary,
+      "numRolls" : Math.floor(money / 500),  // Ajout Pour Nombre Rolls Dynamique 
     });
   })();
 
@@ -349,6 +353,8 @@ bindButton("max-rolls", () => {
       "rare-farmers": farmers.Rare,
       "epic-farmers": farmers.Epic,
       "legendary-farmers": farmers.Legendary,
+      "legendary-farmers": farmers.Legendary,
+      "numRolls" : Math.floor(money / 500), // Ajout Pour Nombre Rolls Dynamique 
     });
   })();
 
@@ -410,6 +416,8 @@ bindButton("expand-field", () => {
         dimension: dimension,
         money: money.toFixed(2),
         profitability: await profitabilityHourMinute(newProf.toFixed(2)),
+        "numRolls" : Math.floor(money / 500), // Ajout Pour Nombre Rolls Dynamique 
+        "expValue" : getUpgradeCost(dimension).cost, // Ajout Pour Cout Dimension Upgrade Dynamique 
       });
   })();
 
@@ -591,6 +599,7 @@ async function checkQuests() {
                         "wheat-amount": wheat.toFixed(2),
                         dimension_perc: actualDimperc || 0,
                         rentability_perc: actualProdPerc || 0,
+                        "numRolls" : Math.floor(money / 500), // Ajout Pour Nombre Rolls Dynamique
                       });
                     })();
                     
@@ -649,7 +658,8 @@ function startPeriodicUpdates() {
         "wheat-price": wheatPrice,
         dimension_perc: dim_perc,
         rentability_perc: prod_perc,
-        "game_time": convertMinutesToTime(game_time)
+        "game_time": convertMinutesToTime(game_time),
+        "numRolls" : Math.floor(money / 500), // Ajout Pour Nombre Rolls Dynamique
       });
     } catch (error) {
       console.error("Error during periodic updates:", error);
