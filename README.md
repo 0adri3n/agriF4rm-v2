@@ -98,6 +98,15 @@ This project was developed using:
 
 ---
 
+## **⏫ Possible Major Improvements**  
+
+- Fix bugs
+- Host game on a web server to play on every devices
+- Export saves system
+- And more
+
+---
+
 ## **🛡️ License**  
 
 This project is licensed under the **MIT License**.  
