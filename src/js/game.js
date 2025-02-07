@@ -203,7 +203,7 @@ bindButton("sell-wheat", async () => {
     return;
   }
 
-  const profit = wheat * wheatPrice;
+  const profit = wheat * await getWheatPrice();
   money += profit;
   wheat = 0;
 
