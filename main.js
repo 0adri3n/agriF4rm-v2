@@ -13,19 +13,19 @@ function createWindow() {
 
   let mini_mode = false;
 
-  // rpc.on("ready", () => {
-  //   rpc.setActivity({
-  //     details: "Farming...",
-  //     largeImageKey: "logo",
-  //     largeImageText: "agriF4rm v2",
-  //     smallImageKey: "v2",
-  //     smallImageText: "v2!",
-  //     instance: false,
-  //     startTimestamp,
-  //   });
-  // });
+  rpc.on("ready", () => {
+    rpc.setActivity({
+      details: "Farming...",
+      largeImageKey: "logo",
+      largeImageText: "agriF4rm v2",
+      smallImageKey: "v2",
+      smallImageText: "v2!",
+      instance: false,
+      startTimestamp,
+    });
+  });
 
-  // rpc.login({ clientId }).catch(console.error);
+  rpc.login({ clientId }).catch(console.error);
 
 
 
